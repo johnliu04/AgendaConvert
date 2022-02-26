@@ -30,21 +30,6 @@ Where:
 * column can be one of {date, time_start, time_end, title, location, description, speaker}
 * value is the expected value for that field
 
-For example, if I got the following simplified rows:
-Title	     Location 	  Description		    Type
-===========================================================================
-Breakfast    Lounge	  Fresh fruits and pastries Session
-Hangout	     Beach	  Have fun		    Subsession of Breakfast
-Lunch	     Price Center Junk food    	   	    Session
-Dinner	     Mamma Linnas Italien handmade pasta    Session
-Networking   Lounge	  Let's meet		    Subsession of Dinner
-
-Then the expected behavior is as follow:
-$python ./lookup_agenda.py location lounge
-Breakfast   Lounge    	  Fresh fruits and pastries Session	  # Returned because its location is lounge 
-Hangout	    Beach	  Have fun		    Subsession    # Returned because its parent session location is lounge
-Networking  Lounge	  Let's meet   	   	    Subsession	  # Returned because its location is lounge
-
 Please note:
 * Program looks for sessions and subsessions
 * If one of the matched session has any subsession, it will return all the subsessions belonging to that session as well
